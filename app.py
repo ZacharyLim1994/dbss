@@ -9,6 +9,11 @@ app = Flask(__name__)
 def index():
     return(render_template("index.html"))   
 
+# @app.route("/prediction",methods=["GET","POST"])
+# def prediction():
+#     q = float(request.form.get("q"))
+#     return(render_template("prediction.html",r=(-50.6*q)+90.2))
+
 @app.route("/prediction",methods=["GET","POST"])
 def prediction():
     q = float(request.form.get("q"))
@@ -19,7 +24,6 @@ def prediction():
     # make prediction
     pred = model.predict([[q]])
 
-    # return(render_template("prediction.html",r=(-50.6*q)+90.2))
     return(render_template("prediction.html",r=pred)
 
 if __name__ == "__main__":
